@@ -1,2 +1,2 @@
 def doble(numero):
-    return numero * 2
+    return numero * 3
