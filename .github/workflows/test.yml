@@ -3,16 +3,12 @@ name: Run Tests
 on:
   push:
     branches: [main]
-    
-permissions:
-  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
     - uses: actions/checkout@v4
 
     - name: Setup Python
@@ -22,8 +18,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install pytest 
+        pip install pytest
 
-    - name: Test with pytest
+    - name: Run tests
       run: |
         pytest > result.log
