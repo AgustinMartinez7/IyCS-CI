@@ -34,7 +34,7 @@ jobs:
       uses: johnnyhuy/actions-discord-git-webhook@main
       with:
         webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
-        message: 🚀 Nuevo deploy
+        message: ${{ github.repository }} has been successfullly deployed
 
   deploy:
     runs-on: ubuntu-latest
