@@ -30,16 +30,11 @@ jobs:
     - name: Test with pytest
       run: pytest test_app.py
 
-    - name: Run Discord Webhook
-      uses: johnnyhuy/actions-discord-git-webhook@main
+    - name: discord
+      uses: sebastianpopp/discord-action@releases/v2
       with:
-        webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
-        username: GitHub Actions 🤖
-        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        content: |
-          🚀 Nuevo deploy realizado por **${{ github.actor }}** en `${{ github.repository }}`  
-          🔁 Commit: `${{ github.sha }}`
-          📦 Mensaje: `${{ github.event.head_commit.message }}`
+        webhook: ${{ secrets.WEBHOOKS_DISCORD_URL }}
+        message: ${{ github.repository }} has been successfullly deployed
 
   deploy:
     runs-on: ubuntu-latest
