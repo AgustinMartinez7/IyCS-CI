@@ -1,4 +1,4 @@
-name: Run Test
+name: Run Tests
 
 on:
   push:
@@ -25,4 +25,5 @@ jobs:
         pip install pytest 
 
     - name: Test with pytest
-      run:  pytest > result.log
+      run: |
+        pytest > result.log
