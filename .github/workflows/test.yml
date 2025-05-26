@@ -29,11 +29,11 @@ jobs:
 
     - name: Test with pytest
       run: pytest test_app.py
-
-    - name: discord
-      uses: sebastianpopp/discord-action@releases/v2
+        
+    - name: Run Discord Webhook
+      uses: johnnyhuy/actions-discord-git-webhook@main
       with:
-        webhook: ${{ secrets.WEBHOOKS_DISCORD_URL }}
+        webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
         message: ${{ github.repository }} has been successfullly deployed
 
   deploy:
