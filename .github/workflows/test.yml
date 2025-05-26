@@ -21,8 +21,9 @@ jobs:
         python-version: '3.13'
 
     - name: Install dependencies
-      run: pip install pytest
-      run: pip install ruff
+      run: 
+        pip install pytest
+        pip install ruff
 
     - name: Run tests
       run: |
