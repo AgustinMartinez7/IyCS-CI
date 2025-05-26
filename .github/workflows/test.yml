@@ -30,6 +30,10 @@ jobs:
     - name: Test with pytest
       run: pytest test_app.py
 
+    - name: Discord Notification
+      uses: tenzin1308/discord-notification@v1.0.0
+      with:
+        discord-webhook-url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
 
   deploy:
     runs-on: ubuntu-latest
