@@ -42,4 +42,4 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         push: true
-        tags: ghcr.io/AgustinMartinez7/IyCS-CI:latest
+        tags: ghcr.io/AgustinMartinez7/iycs-ci:latest
