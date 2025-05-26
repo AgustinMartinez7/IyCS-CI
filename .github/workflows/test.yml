@@ -34,6 +34,12 @@ jobs:
       uses: johnnyhuy/actions-discord-git-webhook@main
       with:
         webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
+        username: GitHub Actions 🤖
+        avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+        content: |
+          🚀 Nuevo deploy realizado por **${{ github.actor }}** en `${{ github.repository }}`  
+          🔁 Commit: `${{ github.sha }}`
+          📦 Mensaje: `${{ github.event.head_commit.message }}`
 
   deploy:
     runs-on: ubuntu-latest
