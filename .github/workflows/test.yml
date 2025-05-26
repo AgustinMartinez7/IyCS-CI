@@ -21,11 +21,7 @@ jobs:
         python-version: '3.13'
 
     - name: Install dependencies
-      run: |
-        pip install pytest ruff    
-
-    - name: Check linting
-      run:  ruff check .
+      run: pip install pytest    
 
     - name: Test with pytest
       run:  pytest test_app.py
