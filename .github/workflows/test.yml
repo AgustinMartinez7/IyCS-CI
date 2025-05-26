@@ -33,9 +33,9 @@ jobs:
     - name: Run Discord Webhook
       uses: johnnyhuy/actions-discord-git-webhook@main
       with:
-        webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
         message: ${{ github.repository }} has been successfullly deployed
-
+        webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
+  
   deploy:
     runs-on: ubuntu-latest
     needs: [build]
