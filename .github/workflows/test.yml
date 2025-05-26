@@ -24,6 +24,8 @@ jobs:
       run: |
         pip install pytest ruff
 
-    - name: Run tests
-      run: |
-        pytest > result.log
+    - name: Check linting
+      run:  ruff check .
+
+    - name: Test with pytest
+      run: pytest test_app.py
