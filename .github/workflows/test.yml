@@ -34,7 +34,7 @@ jobs:
       uses: johnnyhuy/actions-discord-git-webhook@main
       with:
         webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
-        content: 'A new commit by ${{ github.actor }}!'
+        content: 'Despligue exitoso by ${{ github.actor }}!'
        
   deploy:
     runs-on: ubuntu-latest
