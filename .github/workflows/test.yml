@@ -39,11 +39,11 @@ jobs:
 
           ✅ **Build exitosa**
           
-          🌳 Rama: `${{ github.ref_name }}`
-          🔁 Commit: `${{ github.sha }}`
-          📝 Mensaje: `${{ github.event.head_commit.message }}`
+          Rama: `${{ github.ref_name }}`
+          Commit: `${{ github.sha }}`
+          Mensaje: `${{ github.event.head_commit.message }}`
           
-          🕒 Fecha y hora: `${{ github.event.head_commit.timestamp }}`
+          Fecha y hora: `${{ steps.hora.outputs.time_now }}`
 
     - name: Report build error
       if: failure()
@@ -54,11 +54,11 @@ jobs:
 
           ❌ **Falló la build**
           
-          🌳 Rama: `${{ github.ref_name }}`
-          🔁 Commit: `${{ github.sha }}`
-          📝 Mensaje: `${{ github.event.head_commit.message }}`
+          Rama: `${{ github.ref_name }}`
+          Commit: `${{ github.sha }}`
+          Mensaje: `${{ github.event.head_commit.message }}`
 
-          🕒 Fecha y hora: `${{ github.event.head_commit.timestamp }}`
+          Fecha y hora: `${{ steps.hora.outputs.time_now }}`
 
   deploy:
     runs-on: ubuntu-latest
@@ -76,11 +76,9 @@ jobs:
 
           🚀 **Deploy exitoso** 
           
-          👨‍💻 Realizado por **${{ github.actor }}** en `${{ github.repository }}`
-          🌳 Rama: `${{ github.ref_name }}`
-          🔁 Commit: `${{ github.sha }}`
-          📝 Mensaje: `${{ github.event.head_commit.message }}`
-
-          🕒 Fecha y hora: `${{ github.event.head_commit.timestamp }}`
-
+          Realizado por **${{ github.actor }}** en `${{ github.repository }}`
+          Rama: `${{ github.ref_name }}`
+          Commit: `${{ github.sha }}`
+          Mensaje: `${{ github.event.head_commit.message }}`
+          Fecha y hora: `${{ steps.hora.outputs.time_now }}`
 
