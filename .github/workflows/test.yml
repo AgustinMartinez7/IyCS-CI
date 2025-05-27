@@ -30,16 +30,6 @@ jobs:
     - name: Test with pytest
       run: pytest test_app.py
         
-    - name: Send Discord Message
-      uses: sarge841/action-discord-webhook@v1
-      with:
-        webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
-        content: |
-          🚀 Nuevo deploy realizado por **${{ github.actor }}** en `${{ github.repository }}`  
-          🔁 Commit: `${{ github.sha }}`
-          🌳 Branch: `${{ github.ref_name }}`
-          📦 Mensaje: `${{ github.event.head_commit.message }}`
-
     - name: Notificar éxito de build a Discord
       if: success()
       uses: sarge841/action-discord-webhook@v1
@@ -49,7 +39,7 @@ jobs:
           ✅ **Build exitosa**
           🚀 Deploy realizado por **${{ github.actor }}** en `${{ github.repository }}`
           🌳 Rama: `${{ github.ref_name }}`
-          🔁 Commit: `${{ github.sha::7 }}`
+          🔁 Commit: `${{ github.sha }}`
           📝 Mensaje: `${{ github.event.head_commit.message }}`
 
     - name: Notificar error en build a Discord
@@ -61,7 +51,7 @@ jobs:
           ❌ **Falló la build**
           🧯 Acción ejecutada por **${{ github.actor }}** en `${{ github.repository }}`
           🌳 Rama: `${{ github.ref_name }}`
-          🔁 Commit: `${{ github.sha::7 }}`
+          🔁 Commit: `${{ github.sha }}`
           📝 Mensaje: `${{ github.event.head_commit.message }}`
 
   deploy:
