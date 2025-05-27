@@ -33,7 +33,7 @@ jobs:
     - name: Send Discord Message
       uses: sarge841/action-discord-webhook@v1
       with:
-        webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
         content: |
           🚀 Nuevo deploy realizado por **${{ github.actor }}** en `${{ github.repository }}`  
           🔁 Commit: `${{ github.sha }}`
