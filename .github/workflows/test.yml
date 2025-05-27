@@ -30,12 +30,30 @@ jobs:
     - name: Test with pytest
       run: pytest test_app.py
         
-    - name: Run Discord Webhook
-      uses: johnnyhuy/actions-discord-git-webhook@main
+    - name: Notificar éxito de build a Discord
+      if: success()
+      uses: sarge841/action-discord-webhook@v1
       with:
         webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
-        message: "Hello, from Github"
-  
+        content: |
+          ✅ **Build exitosa**
+          🚀 Deploy realizado por **${{ github.actor }}** en `${{ github.repository }}`
+          🌳 Rama: `${{ github.ref_name }}`
+          🔁 Commit: `${{ github.sha }}`
+          📝 Mensaje: `${{ github.event.head_commit.message }}`
+
+    - name: Notificar error en build a Discord
+      if: failure()
+      uses: sarge841/action-discord-webhook@v1
+      with:
+        webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
+        content: |
+          ❌ **Falló la build**
+          🧯 Acción ejecutada por **${{ github.actor }}** en `${{ github.repository }}`
+          🌳 Rama: `${{ github.ref_name }}`
+          🔁 Commit: `${{ github.sha }}`
+          📝 Mensaje: `${{ github.event.head_commit.message }}`
+
   deploy:
     runs-on: ubuntu-latest
     needs: [build]
