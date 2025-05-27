@@ -36,10 +36,14 @@ jobs:
       with:
         webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
         content: |
+
           ✅ **Build exitosa**
+          
           🌳 Rama: `${{ github.ref_name }}`
           🔁 Commit: `${{ github.sha }}`
           📝 Mensaje: `${{ github.event.head_commit.message }}`
+          
+          🕒 Fecha y hora: `${{ github.event.head_commit.timestamp }}`
 
     - name: Report build error
       if: failure()
@@ -47,10 +51,14 @@ jobs:
       with:
         webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
         content: |
+
           ❌ **Falló la build**
+          
           🌳 Rama: `${{ github.ref_name }}`
           🔁 Commit: `${{ github.sha }}`
           📝 Mensaje: `${{ github.event.head_commit.message }}`
+
+          🕒 Fecha y hora: `${{ github.event.head_commit.timestamp }}`
 
   deploy:
     runs-on: ubuntu-latest
@@ -65,10 +73,14 @@ jobs:
       with:
         webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
         content: |
+
           🚀 **Deploy exitoso** 
+          
           👨‍💻 Realizado por **${{ github.actor }}** en `${{ github.repository }}`
           🌳 Rama: `${{ github.ref_name }}`
           🔁 Commit: `${{ github.sha }}`
           📝 Mensaje: `${{ github.event.head_commit.message }}`
+
+          🕒 Fecha y hora: `${{ github.event.head_commit.timestamp }}`
 
 
