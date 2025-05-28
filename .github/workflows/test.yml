@@ -37,6 +37,6 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.WEBHOOKS_SLACK_URL }}
         SLACK_CHANNEL: test
         SLACK_MESSAGE: 'Test successful!'
-        SLACK_ICON_EMOJI: check
+        SLACK_ICON_EMOJI: robot
 
 
