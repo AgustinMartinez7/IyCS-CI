@@ -36,9 +36,9 @@ jobs:
       env:
         SLACK_WEBHOOK: ${{ secrets.WEBHOOKS_SLACK_URL }}
         SLACK_CHANNEL: test
-        SLACK_MESSAGE: 'Test successful!'
+        SLACK_MESSAGE: '✔️ - Test successful!'
         SLACK_COLOR: success
-        REMOVE: Ref
+        MSG_MINIMAL: Actions URL, Commit, Event
   
 
 
