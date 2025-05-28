@@ -29,14 +29,14 @@ jobs:
 
     - name: Test with pytest
       run: pytest test_app.py
-
-    - name: Notify Slack
+        
+    - name: Slack Notification
       if: success()
-      uses: drilonrecica/action-slack-notify@0.0.3
+      uses: rtCamp/action-slack-notify@v2
       env:
-        SLACK_WEBHOOK: ${{ secrets.WEBHOOKS_SLACK_URL }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }
         SLACK_MESSAGE: 'Post Content :rocket:'
-    
+        
   deploy:
     runs-on: ubuntu-latest
     needs: [build]
