@@ -30,57 +30,25 @@ jobs:
     - name: Test with pytest
       run: pytest test_app.py
         
-    - name: Report build success 
+    - name: Slack Notification for Success
       if: success()
-      uses: sarge841/action-discord-webhook@v1
-      with:
-        webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
-        content: |
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.WEBHOOKS_SLACK_URL }}
+        SLACK_CHANNEL: test
+        SLACK_MESSAGE: 'Test successful!'
+        SLACK_COLOR: success
+        MSG_MINIMAL: Actions URL,Commit
 
-          ✅ **Build exitosa**
-          
-          🌳 Rama: `${{ github.ref_name }}`
-          🔁 Commit: `${{ github.sha }}`
-          📝 Mensaje: `${{ github.event.head_commit.message }}`
-          
-          🕒 Fecha y hora: `${{ github.event.head_commit.timestamp }}`
-
-    - name: Report build error
+    - name: Slack Notification for Failure
       if: failure()
-      uses: sarge841/action-discord-webhook@v1
-      with:
-        webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
-        content: |
-
-          ❌ **Falló la build**
-          
-          🌳 Rama: `${{ github.ref_name }}`
-          🔁 Commit: `${{ github.sha }}`
-          📝 Mensaje: `${{ github.event.head_commit.message }}`
-
-          🕒 Fecha y hora: `${{ github.event.head_commit.timestamp }}`
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [build]
-
-    steps:
-    - name: Trigger Render Deploy
-      run: curl -X POST https://api.render.com/deploy/srv-d0qc56bipnbc73e8g2f0?key=5q9un_Yka0I
-
-    - name: Report build success 
-      uses: sarge841/action-discord-webhook@v1
-      with:
-        webhook_url: ${{ secrets.WEBHOOKS_DISCORD_URL }}
-        content: |
-
-          🚀 **Deploy exitoso** 
-          
-          👨‍💻 Realizado por **${{ github.actor }}** en `${{ github.repository }}`
-          🌳 Rama: `${{ github.ref_name }}`
-          🔁 Commit: `${{ github.sha }}`
-          📝 Mensaje: `${{ github.event.head_commit.message }}`
-
-          🕒 Fecha y hora: `${{ github.event.head_commit.timestamp }}`
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.WEBHOOKS_SLACK_URL }}
+        SLACK_CHANNEL: test
+        SLACK_MESSAGE: 'Test Failed!'
+        SLACK_COLOR: failure
+        MSG_MINIMAL: Actions URL,Commit
+  
 
 
