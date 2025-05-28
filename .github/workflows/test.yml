@@ -38,7 +38,7 @@ jobs:
         SLACK_CHANNEL: test
         SLACK_MESSAGE: 'Test successful!'
         SLACK_COLOR: success
-        MSG_MINIMAL: Ref
+        REMOVE: Ref
   
 
 
