@@ -48,7 +48,7 @@ jobs:
       env:
         SLACK_WEBHOOK: ${{ secrets.WEBHOOKS_SLACK_URL }}
         SLACK_USERNAME: CI/CD Bot
-        SLACK_ICON_EMOJI: robot face
+        SLACK_ICON_EMOJI: robot
         SLACK_CHANNEL: test
         SLACK_MESSAGE: 'Test Failed!'
         SLACK_COLOR: failure
