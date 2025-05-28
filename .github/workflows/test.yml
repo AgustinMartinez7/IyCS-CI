@@ -36,7 +36,7 @@ jobs:
       env:
         SLACK_WEBHOOK: ${{ secrets.WEBHOOKS_SLACK_URL }}
         SLACK_USERNAME: Test Bot
-        SLACK_ICON_EMOJI: robot face
+        SLACK_ICON_EMOJI: robot_face
         SLACK_CHANNEL: test
         SLACK_MESSAGE: 'Test successful!'
         SLACK_COLOR: success
@@ -48,7 +48,7 @@ jobs:
       env:
         SLACK_WEBHOOK: ${{ secrets.WEBHOOKS_SLACK_URL }}
         SLACK_USERNAME: Test Bot
-        SLACK_ICON_EMOJI: 🤖
+        SLACK_ICON_EMOJI: robot_face
         SLACK_CHANNEL: test
         SLACK_MESSAGE: 'Test Failed!'
         SLACK_COLOR: failure
