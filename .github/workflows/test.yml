@@ -37,5 +37,6 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.WEBHOOKS_SLACK_URL }}
         SLACK_MESSAGE: 'Post Content :rocket:'
         SLACK_CHANNEL: informal
+        SLACK_ICON_EMOJI: rocket
 
 
