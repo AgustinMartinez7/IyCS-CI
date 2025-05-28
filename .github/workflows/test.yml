@@ -35,8 +35,8 @@ jobs:
       uses: rtCamp/action-slack-notify@v2
       env:
         SLACK_WEBHOOK: ${{ secrets.WEBHOOKS_SLACK_URL }}
-        SLACK_MESSAGE: 'Post Content :rocket:'
-        SLACK_CHANNEL: informal
-        SLACK_ICON_EMOJI: shipit
+        SLACK_CHANNEL: test
+        SLACK_MESSAGE: 'Test successful!'
+        SLACK_ICON_EMOJI: marca de verificación gruesa
 
 
