@@ -60,15 +60,8 @@ jobs:
     needs: [build_and_test]
 
     steps:
-    #- name: Deploy to Render
-    #  run: curl -X POST https://api.render.com/deploy/srv-d0qc56bipnbc73e8g2f0?key=5q9un_Yka0I
-
     - name: Deploy to Render
-      uses: sws2apps/render-deployment@main
-      with:
-        serviceId: ${{ secrets.RENDER_SERVICE_ID }}
-        apiKey: ${{ secrets.RENDER_API_KEY }}
-        multipleDeployment: false
+      run: curl -X POST https://api.render.com/deploy/srv-d0qc56bipnbc73e8g2f0?key=5q9un_Yka0I
     
     - name: Slack notification for success
       if: success()
