@@ -54,39 +54,24 @@ jobs:
         SLACK_MESSAGE: 'Test Failed!'
         SLACK_COLOR: failure
         MSG_MINIMAL: Actions URL,Commit
-  
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [build_and_test]
-
-    steps:
-    - name: Deploy to Render
-      uses: sws2apps/render-deployment@main
+        
+    - name: Link to Trello
+      uses: kagof/trello-link-github-action@v1.1.0
       with:
-        serviceId: ${{ secrets.RENDER_SERVICE_ID }}
-        apiKey: ${{ secrets.RENDER_API_KEY }}
-        multipleDeployment: false
-    
-    - name: Slack notification for success
-      if: success()
-      uses: rtCamp/action-slack-notify@v2
-      env:
-        SLACK_WEBHOOK: ${{ secrets.WEBHOOKS_SLACK_URL }}
-        SLACK_USERNAME: Deploy Bot
-        SLACK_ICON_EMOJI: robot_face
-        SLACK_CHANNEL: deploy
-        SLACK_MESSAGE: 'Deploy successful!'
-        SLACK_COLOR: success
-        MSG_MINIMAL: Actions URL,Commit
-
-    - name: Slack notification for failure
-      if: failure()
-      uses: rtCamp/action-slack-notify@v2
-      env:
-        SLACK_WEBHOOK: ${{ secrets.WEBHOOKS_SLACK_URL }}
-        SLACK_USERNAME: Deploy Bot
-        SLACK_ICON_EMOJI: robot_face
-        SLACK_CHANNEL: deploy
-        SLACK_MESSAGE: 'Deploy Failed!'
-        SLACK_COLOR: failure
-        MSG_MINIMAL: Actions URL,Commit
+        # Required.
+        # Allowed to be one of the following:
+        # 1. the board name
+        # 2. the board shortLink (can be found in the URL)
+        # 3. the boardId (can be found via the Trello REST API)
+        board-identifier: "${{ secrets.TRELLO_BOARD_ID }}"
+        # Required
+        # Secret token used to contact Trello
+        trello-token: "${{ secrets.TRELLO_TOKEN }}"
+        # Optional (default 'TRELLO-')
+        # When preceding a string in a commit message or PR body or title,
+        # indicates that the string is a Trello shortId.
+        # May be either:
+        # 1. an alpha string, eg TRELLO
+        # 2. an alpha string followed by a dash, eg TRELLO-
+        # 3. one of the characters ! @ # $ % ^ & * + = (note: must be exactly 1 char long)
+        marker: 'TRELLO-'
