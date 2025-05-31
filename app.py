@@ -9,7 +9,7 @@ templates = Jinja2Templates(directory="templates")
 def doble(numero: int) -> int:
     return numero * 2
 
-@app.get("/doble_html", response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse)
 def obtener_doble_html(request: Request, numero: int):
     resultado = doble(numero)
     return templates.TemplateResponse("doble.html", {
