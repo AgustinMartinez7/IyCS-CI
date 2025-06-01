@@ -1,6 +1,7 @@
 [run]
-source = app
+source = .
 
 [report]
 omit =
-    tests/*
+    */test_*.py
+

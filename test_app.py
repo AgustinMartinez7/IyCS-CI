@@ -1,4 +1,4 @@
-from app.app import doble
+from app import doble
 
 def test_doble():
     assert doble(2) == 4
