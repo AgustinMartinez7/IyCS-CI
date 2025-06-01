@@ -28,15 +28,6 @@ jobs:
     - name: Check linting
       run:  ruff check .
 
-    - name: Trello
-      uses: rematocorp/trello-integration-action@v9
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        trello-api-key: ${{ secrets.TRELLO_API_KEY }}
-        trello-auth-token: ${{ secrets.TRELLO_TOKEN }}
-        trello-list-id-pr-open: 683a62f1bbfaf7db59fcd5d8
-        trello-list-id-pr-closed: 683a62f1bbfaf7db59fcd5da
-
   tests:
     runs-on: ubuntu-latest
     needs: [lint]
@@ -125,4 +116,3 @@ jobs:
         SLACK_MESSAGE: 'Deploy Failed!'
         SLACK_COLOR: failure
         MSG_MINIMAL: Actions URL,Commit
-        
