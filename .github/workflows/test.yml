@@ -32,7 +32,7 @@ jobs:
       run: pytest test_app.py
 
     - name: SonarQube Scan
-      uses: sonarsource/sonarcloud-github-action@<action version>
+      uses: sonarsource/sonarcloud-github-action@v5
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         
