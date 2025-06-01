@@ -36,11 +36,6 @@ jobs:
         coverage run -m pytest
         coverage xml
 
-    - name: Replace absolute path in coverage.xml
-      run: |
-        ABS_PATH=$(pwd | sed 's_/_\\\\_g')
-        sed -i "s|<source>.*</source>|<source>${ABS_PATH}</source>|" coverage.xml
-
     - name: SonarQube Scan
       uses: sonarsource/sonarcloud-github-action@v5
       env:
