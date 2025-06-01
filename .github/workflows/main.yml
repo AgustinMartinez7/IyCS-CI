@@ -1,0 +1,17 @@
+name: Trello integration
+on:
+    pull_request:
+        types: [opened, edited, closed, reopened, ready_for_review, converted_to_draft]
+    issue_comment:
+        types: [created, edited]
+jobs:
+    trello:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: rematocorp/trello-integration-action@v9
+              with:
+                github-token: ${{ secrets.GITHUB_TOKEN }}
+                trello-api-key: ${{ secrets.TRELLO_API_KEY }}
+                trello-auth-token: ${{ secrets.TRELLO_TOKEN }}
+                trello-list-id-pr-open: 683a62f1bbfaf7db59fcd5d8
+                trello-list-id-pr-closed: 683a62f1bbfaf7db59fcd5da
