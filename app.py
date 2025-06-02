@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-
 app = FastAPI()
 
 def doble(numero: int) -> int:
@@ -9,4 +8,3 @@ def doble(numero: int) -> int:
 def obtener_doble(numero: int):
     resultado = doble(numero)
     return {"resultado": resultado}
-
