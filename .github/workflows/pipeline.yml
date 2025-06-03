@@ -116,3 +116,29 @@ jobs:
         SLACK_MESSAGE: 'Deploy Failed!'
         SLACK_COLOR: failure
         MSG_MINIMAL: Actions URL,Commit
+
+  locust-test:
+    runs-on: ubuntu-latest
+    needs: [deploy]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Locust Performance Tests
+        uses: thomasvjoseph/locust@v1.1.7
+        with:
+          URL: https://iycs-ci.onrender.com/   # Replace with your target URL
+          USERS: 2                       # Number of concurrent users
+          RATE: 1                        # Rate of user spawning
+          RUNTIME: 10s                   # Duration of the test
+          HEADLESS: true                 # Run Locust in headless mode
+          LOGLEVEL: DEBUG                # Set logging level
+          html_report: 'example.html'    # Name of the HTML report file
+
+      - name: Upload Locust Test Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: locust-report            # Name of the artifact
+          path: example.html             # Path to the generated HTML report
+          if-no-files-found: warn        # Warn if no files are found
+          retention-days: 1              # Retention period for the artifact
