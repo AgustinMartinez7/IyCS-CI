@@ -128,9 +128,10 @@ jobs:
         uses: thomasvjoseph/locust@v1.1.7
         with:
           URL: https://iycs-ci.onrender.com/   # Replace with your target URL
+          LOCUSTFILE: locustfile.py
           USERS: 2                       # Number of concurrent users
           RATE: 1                        # Rate of user spawning
-          RUNTIME: 10s                   # Duration of the test
+          RUNTIME: 25s                   # Duration of the test
           HEADLESS: true                 # Run Locust in headless mode
           LOGLEVEL: DEBUG                # Set logging level
           html_report: 'example.html'    # Name of the HTML report file
