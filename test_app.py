@@ -13,3 +13,8 @@ def test_obtener_doble():
     response = client.get("/doble?numero=5")
     assert response.status_code == 200
     assert response.json() == {"resultado": 10}
+
+def test_index():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == "Taller CI/CD - Agustin Martinez"
