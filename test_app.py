@@ -1,6 +1,5 @@
 from fastapi.testclient import TestClient
-from app import doble
-from app import app
+from app import doble, app
 
 client = TestClient(app)
 

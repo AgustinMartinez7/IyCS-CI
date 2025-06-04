@@ -1,6 +1,6 @@
-fastapi
-uvicorn
-pytest
-ruff
-coverage
-httpx
+fastapi==0.115.12
+uvicorn==0.34.2
+pytest==8.3.5
+ruff==0.11.11
+coverage==7.8.2
+httpx==0.28.1
