@@ -2,12 +2,12 @@ name: Pipeline
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+      branches-ignore:
+        - main
 
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
     
 jobs:
   lint:
@@ -47,7 +47,7 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: Test with pytest
-      run: pytest test_app.py
+      run: pytest test_app.py 
 
     - name: Test with coverage
       run: |
@@ -82,6 +82,15 @@ jobs:
         SLACK_MESSAGE: 'Test Failed!'
         SLACK_COLOR: failure
         MSG_MINIMAL: Actions URL,Commit
+      
+    - name: Create PR
+      if: success()
+      uses: desbravacloud/action-create-pull-requests@v1
+      with:
+        origin-branch: '${{ github.ref_name }}'
+        target-branch: 'main'
+        custom-title: 'PR created -'
+        custom-body: 'Functionality started'
 
   deploy:
     runs-on: ubuntu-latest
