@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 app = FastAPI()
 
+var = "Taller CI/CD - Agustin Martinez"
+
 def doble(numero: int) -> int:
     return numero * 2
 
@@ -9,7 +11,6 @@ def obtener_doble(numero: int):
     resultado = doble(numero)
     return {"resultado": resultado}
 
-var = "Taller CI/CD - Agustin Martinez"
 @app.get("/")
 def index():
     return var
