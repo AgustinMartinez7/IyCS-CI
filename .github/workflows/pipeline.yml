@@ -2,8 +2,8 @@ name: Pipeline
 
 on:
   push:
-        branches-ignore:
-          - main
+      branches-ignore:
+        - main
 
 permissions:
   contents: write
@@ -49,6 +49,15 @@ jobs:
     - name: Test with pytest
       run: pytest test_app.py
 
+    - name: Create PR
+      if: success()
+      uses: desbravacloud/action-create-pull-requests@v1
+      with:
+        origin-branch: '${{ github.ref_name }}'
+        target-branch: 'main'
+        custom-title: 'PR created'
+        custom-body: '${{ github.ref_name }}' 
+
     - name: Test with coverage
       run: |
         coverage run -m pytest
@@ -82,15 +91,6 @@ jobs:
         SLACK_MESSAGE: 'Test Failed!'
         SLACK_COLOR: failure
         MSG_MINIMAL: Actions URL,Commit
-
-    - name: Create PR
-      if: success()
-      uses: desbravacloud/action-create-pull-requests@v1
-      with:
-        origin-branch: '${{ github.ref_name }}'
-        target-branch: 'main'
-        custom-title: 'PR created'
-        custom-body: '${{ github.ref_name }}  
 
   deploy:
     runs-on: ubuntu-latest
