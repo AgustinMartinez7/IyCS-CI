@@ -81,6 +81,9 @@ jobs:
     needs: [tests]
 
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
     - name: Deploy to Render
       uses: sws2apps/render-deployment@main
       with:
