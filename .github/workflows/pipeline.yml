@@ -60,7 +60,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     - name: Slack notification for success
-      if: success()
+      if: success() && github.event.head_commit != null
       uses: rtCamp/action-slack-notify@v2
       env:
         SLACK_WEBHOOK: ${{ secrets.WEBHOOKS_SLACK_URL }}
