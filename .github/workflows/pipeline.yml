@@ -36,6 +36,7 @@ jobs:
     - name: Test with coverage
       run: |
         coverage run -m pytest
+        coverage report
         coverage xml
 
     - name: SonarQube Scan
