@@ -10,8 +10,8 @@ permissions:
   pull-requests: write
     
 jobs:
-  if: github.event.head_commit != null
   tests:
+    if: github.event.head_commit != null
     runs-on: ubuntu-latest
 
     steps:
