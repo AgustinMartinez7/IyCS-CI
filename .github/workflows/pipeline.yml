@@ -1,16 +1,16 @@
 name: Pipeline
 
 on:
-  push:
+  pull_request:
       branches-ignore:
         - main
 
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
     
 jobs:
   tests:
-    if: github.event.head_commit != null
     runs-on: ubuntu-latest
 
     steps:
@@ -73,9 +73,6 @@ jobs:
     needs: [tests]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
     - name: Deploy to Render
       uses: sws2apps/render-deployment@main
       with:
