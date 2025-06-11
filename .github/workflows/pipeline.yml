@@ -50,6 +50,7 @@ jobs:
         SLACK_MESSAGE: 'Test successful!'
         SLACK_COLOR: success
         MSG_MINIMAL: Actions URL,Commit
+        SLACK_FOOTER: Ingenieria y Calidad de Software - UTN
 
     - name: Slack notification for failure
       if: failure()
@@ -62,6 +63,7 @@ jobs:
         SLACK_MESSAGE: 'Test Failed!'
         SLACK_COLOR: failure
         MSG_MINIMAL: Actions URL,Commit
+        SLACK_FOOTER: Ingenieria y Calidad de Software - UTN
 
     - name: Create PR
       if: success()
@@ -95,6 +97,7 @@ jobs:
         SLACK_MESSAGE: 'Deploy successful!'
         SLACK_COLOR: success
         MSG_MINIMAL: Actions URL,Commit
+        SLACK_FOOTER: Ingenieria y Calidad de Software - UTN
 
     - name: Slack notification for failure
       if: failure()
@@ -107,3 +110,4 @@ jobs:
         SLACK_MESSAGE: 'Deploy Failed!'
         SLACK_COLOR: failure
         MSG_MINIMAL: Actions URL,Commit
+        SLACK_FOOTER: Ingenieria y Calidad de Software - UTN
