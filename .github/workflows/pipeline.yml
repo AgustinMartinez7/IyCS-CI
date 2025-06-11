@@ -39,11 +39,6 @@ jobs:
         coverage report
         coverage xml
 
-    - name: SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@v5
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
     - name: Slack notification for success
       if: success()
       uses: rtCamp/action-slack-notify@v2
