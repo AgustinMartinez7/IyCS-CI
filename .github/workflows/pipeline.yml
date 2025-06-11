@@ -116,3 +116,4 @@ jobs:
         SLACK_COLOR: failure
         MSG_MINIMAL: Actions URL,Commit
         SLACK_FOOTER: Ingeniería y Calidad de Software - UTN
+        
