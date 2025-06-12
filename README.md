@@ -1,5 +1,5 @@
 # Taller Integración y Despliegue Continuo (CI/CD)
-Este proyecto implementa una arquitectura completa de Integración Continua (CI) y Despliegue Continuo (CD) para una API desarrollada en Python.
+Este proyecto implementa una arquitectura de Integración Continua (CI) y Despliegue Continuo (CD) para una API desarrollada en Python.
 
 ## Tecnologías y herramientas utilizadas
 ![Tecnologias](https://github.com/AgustinMartinez7/IyCS-CI/blob/main/img/Tecnologias.png)
