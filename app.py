@@ -5,7 +5,7 @@ var = "Taller CI/CD - Agustin Martinez"
 
 def doble(numero: int) -> int:
     return numero * 2
-
+7
 @app.get("/doble")
 def obtener_doble(numero: int):
     resultado = doble(numero)
