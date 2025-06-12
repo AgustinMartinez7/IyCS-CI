@@ -13,4 +13,4 @@ def obtener_doble(numero: int):
 
 @app.get("/")
 def index():
-    return var 
+    return var  
